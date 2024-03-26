@@ -29,6 +29,6 @@ import { CmsService } from './shared/services/cms.service';
 })
 export class AppModule {
   constructor(private cmsSrvice: CmsService){
-    this.cmsSrvice.getAllPosts();
+    this.cmsSrvice.getFaq();
   }
 }

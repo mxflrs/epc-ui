@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ClientConfig, SanityClient, createClient } from '@sanity/client';
 import { environment } from '../../../environment/environment';
 import { Faq } from '../../../domain/faq';
@@ -9,7 +8,6 @@ import { Faq } from '../../../domain/faq';
 })
 
 export class CmsService {
-  // private client: SanityClient;
 
   private clientConfig: ClientConfig = {
     projectId: environment.sanity.projectId,
@@ -18,17 +16,13 @@ export class CmsService {
     useCdn: environment.sanity.useCdn,
   };
 
-  constructor() {
-    // this.client = this.sanityClient();
-  }
-
-  private sanityClient(): SanityClient {
+  #sanityClient(): SanityClient {
     return createClient(this.clientConfig);
   }
 
-  async getAllPosts(): Promise<Faq[]> {
-    return await this.sanityClient().fetch(
-      '*[_type == "faq"]'
+  async getFaq(): Promise<Faq[]> {
+    return await this.#sanityClient().fetch(
+      '*'
     );
   }
 }
