@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "epc-ui:build:production"
+              "buildTarget": "epc-ui:build:production"
             },
             "development": {
-              "browserTarget": "epc-ui:build:development"
+              "buildTarget": "epc-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "epc-ui:build"
+            "buildTarget": "epc-ui:build"
           }
         },
         "test": {

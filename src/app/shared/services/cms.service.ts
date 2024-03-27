@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ClientConfig, SanityClient, createClient } from '@sanity/client';
 import { environment } from '../../../environment/environment';
 import { Faq } from '../../../domain/faq';
 import { Page } from '../../../domain/pages';
@@ -8,6 +7,8 @@ import { HeroSlider } from '../../../domain/heroSlider';
 import { Info } from '../../../domain/info';
 import { Services } from '../../../domain/services';
 import { Brands } from '../../../domain/brands';
+// @ts-ignore
+import { ClientConfig, SanityClient, createClient } from '@sanity/client';
 
 @Injectable({
   providedIn: 'root',

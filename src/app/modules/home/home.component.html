@@ -5,8 +5,8 @@
   </div>
 </section>
 
-<!-- @for (item of faqs; track item._id) {
-  <li>{{ item.title }}</li>
-  } @empty {
-  <li>There are no items.</li>
-  } -->
+@for (item of services; track item._id) {
+<li>{{ item.parentService }}</li>
+} @empty {
+<li>There are no items.</li>
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CmsService } from '../../shared/services/cms.service';
 import { Subscription } from 'rxjs';
 import { Services } from '../../../domain/services';
