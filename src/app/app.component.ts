@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CmsService } from './shared/services/cms.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'epc-ui';
+  constructor(private cmsSrvice: CmsService){
+    this.cmsSrvice.getData();
+  }
 }

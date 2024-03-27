@@ -1,4 +1,6 @@
-export interface info {
+import { BaseEntity } from './baseEntity';
+
+export interface Info extends BaseEntity {
     title: string
     address: string
     phone: string[]

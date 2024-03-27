@@ -8,7 +8,6 @@ import { HomeComponent } from './modules/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NotFoundComponent } from './modules/not-found/not-found.component';
-import { CmsService } from './shared/services/cms.service';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,4 @@ import { CmsService } from './shared/services/cms.service';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(private cmsSrvice: CmsService){
-    this.cmsSrvice.getFaq();
-  }
-}
+export class AppModule {}
