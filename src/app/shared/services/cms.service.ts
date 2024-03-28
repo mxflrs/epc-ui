@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../../environment/environment';
 import { Faq } from '../../../domain/faq';
@@ -9,13 +9,13 @@ import { Services } from '../../../domain/services';
 import { Brands } from '../../../domain/brands';
 // @ts-ignore
 import { ClientConfig, SanityClient, createClient } from '@sanity/client';
+import { DataType } from '../../../domain/dataType';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CmsService {
   #dataSubject = new BehaviorSubject<any[]>([]);
-  data$ = this.#dataSubject.asObservable();
 
   #faqsSubject = new BehaviorSubject<Faq[]>([]);
   faqs$ = this.#faqsSubject.asObservable();
@@ -34,6 +34,8 @@ export class CmsService {
 
   #brandsSubject = new BehaviorSubject<Brands[]>([]);
   brands$ = this.#brandsSubject.asObservable();
+
+  // * SANITY CONFIG
 
   #clientConfig: ClientConfig = {
     projectId: environment.sanity.projectId,
@@ -58,11 +60,15 @@ export class CmsService {
 
   populateData() {
     const data = this.#dataSubject.getValue();
-    this.#brandsSubject.next(data.filter((i: any) => i._type === 'brands'));
-    this.#pagesSubject.next(data.filter((i: any) => i._type === 'pages'));
-    this.#faqsSubject.next(data.filter((i: any) => i._type === 'faq'));
-    this.#heroSlidersSubject.next(data.filter((i: any) => i._type === 'heroSlider'));
-    this.#infoSubject.next(data.filter((i: any) => i._type === 'info'));
-    this.#servicesSubject.next(data.filter((i: any) => i._type === 'services'));
+    this.populateSubject(this.#brandsSubject, 'brands', data);
+    this.populateSubject(this.#pagesSubject, 'pages', data);
+    this.populateSubject(this.#faqsSubject, 'faq', data);
+    this.populateSubject(this.#heroSlidersSubject, 'heroSlider', data);
+    this.populateSubject(this.#infoSubject, 'info', data);
+    this.populateSubject(this.#servicesSubject, 'services', data);
+  }
+
+  populateSubject(subject: BehaviorSubject<any[]>, type: string, data: DataType[]) {
+    subject.next(data.filter((i: DataType) => i._type === type));
   }
 }

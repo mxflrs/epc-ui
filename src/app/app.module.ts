@@ -8,6 +8,8 @@ import { HomeComponent } from './modules/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NotFoundComponent } from './modules/not-found/not-found.component';
+import { LogoComponent } from './shared/components/logo/logo.component';
+import { SliderComponent } from './modules/home/components/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,13 @@ import { NotFoundComponent } from './modules/not-found/not-found.component';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LogoComponent,
+    SliderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

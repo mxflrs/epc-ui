@@ -1,3 +1,18 @@
-<header class="container mx-auto">
-  <p>navbar works!</p>
+<header class="container flex items-end justify-between mx-auto min-h-16">
+  <!-- LOGO -->
+  <section class="relative">
+    <app-logo />
+  </section>
+
+  <!-- MENU -->
+  <section class="flex items-center gap-8">
+    <ul class="flex gap-8">
+      @for (page of pages(); track page._id) {
+      <li class="text-xs font-bold uppercase">{{page.title}}</li>
+      }
+    </ul>
+    <button>
+      <i class="iconoir-menu"></i>
+    </button>
+  </section>
 </header>
