@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HeroSlider } from '../../../../../domain/heroSlider';
+import { ImageBuilderService } from '../../../../shared/services/image-builder.service';
 
 @Component({
   selector: 'app-slider',
@@ -8,18 +9,12 @@ import { HeroSlider } from '../../../../../domain/heroSlider';
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent {
   @Input() sliderData: HeroSlider[] = [];
 
-  constructor() {}
+  constructor(private imageBuilder: ImageBuilderService) {}
 
-  ngOnInit(): void {
-    console.log(this.sliderData, 'FROM INSIDE');
+  imageUrl(id: string, w: number, h: number) {
+    return this.imageBuilder.image(id).url();
   }
-
-  ngOnChanges(): void {
-    console.log(this.sliderData, 'FROM ngOnChanges');
-  }
-
-  ngOnDestroy(): void {}
 }

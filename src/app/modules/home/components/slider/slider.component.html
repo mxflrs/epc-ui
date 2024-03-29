@@ -1,4 +1,4 @@
 @for (slider of sliderData; track slider._id) {
-  <h1>{{slider.title}}</h1>
-  <!-- <img src={{slider.image}} alt=""> -->
+  <h1>{{slider.image.asset._ref}}</h1>
+  <img [src]="imageUrl(slider.image.asset._ref, 500, 500)" alt="" class="w-8 h-8">
 }
