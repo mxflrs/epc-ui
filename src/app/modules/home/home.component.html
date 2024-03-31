@@ -1,11 +1,16 @@
-<section class="py-32 min-h-96 bg-epc-w0">
+<section class="pt-2 mb-24 min-h-96">
   <div class="container mx-auto">
     <app-slider [sliderData]="sliderData" />
   </div>
 </section>
 
-<!-- @for (item of services; track item._id) {
-<li>{{ item.parentService }}</li>
-} @empty {
-<li>There are no items.</li>
-} -->
+<section #scrollingSection class="flex items-center w-full gap-8 overflow-hidden bg-epc-r0 min-h-32 text-nowrap">
+  @for (service of services; track service._id){
+  <p class="text-epc-r2">{{service.parentService}}</p>
+  <span class="text-epc-r2">/</span>
+  }
+</section>
+
+<app-servicios-grid [services]="services" />
+<app-faq [faqs]="faqs" [services]="services"/>
+<app-marcas [brands]="brands" />

@@ -1,16 +1,9 @@
 import { BaseEntity } from './baseEntity';
+import { SanityImage } from './sanityImage';
 
 export interface HeroSlider extends BaseEntity {
     title: string
     subtitle?: string
     description: string
     image: SanityImage
-}
-
-interface SanityImage {
-  asset: {
-    _type: string
-    _ref: string
-  }
-
 }

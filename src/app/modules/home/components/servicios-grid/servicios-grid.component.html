@@ -1,0 +1,24 @@
+<section class="container grid grid-cols-6 mx-auto my-24">
+
+  <!-- INTRO -->
+  <h2 class="col-span-4">¡Estamos aquí para brindarte todo el apoyo<br/> que necesites en cada paso del camino!</h2>
+  <div class="col-span-2">
+    <h6>Desde resolver tus consultas más simples hasta abordar desafíos más complejos, nuestro compromiso es estar a tu lado en cada paso del proceso.</h6>
+  </div>
+</section>
+
+
+  <!-- SERVICES -->
+  <section class="container grid grid-cols-3 gap-4 mx-auto">
+    @for (service of services; track service._id){
+      <div class="card group">
+        <h3>{{service.parentService}}</h3>
+        <!-- <p>{{service.subservices}}</p> -->
+        <p class="text-xs">This is the container for parent service</p>
+        <div class="icon">
+          <i class="iconoir-{{service.icon}}"></i>
+        </div>
+      </div>
+
+    }
+  </section>

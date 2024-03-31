@@ -10,6 +10,10 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { NotFoundComponent } from './modules/not-found/not-found.component';
 import { LogoComponent } from './shared/components/logo/logo.component';
 import { SliderComponent } from './modules/home/components/slider/slider.component';
+import { NgOptimizedImage } from '@angular/common';
+import { ServiciosGridComponent } from './modules/home/components/servicios-grid/servicios-grid.component';
+import { FaqComponent } from './modules/home/components/faq/faq.component';
+import { MarcasComponent } from './modules/home/components/marcas/marcas.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { SliderComponent } from './modules/home/components/slider/slider.compone
     BrowserModule,
     AppRoutingModule,
     LogoComponent,
-    SliderComponent
+    SliderComponent,
+    NgOptimizedImage,
+    ServiciosGridComponent,
+    FaqComponent,
+    MarcasComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
