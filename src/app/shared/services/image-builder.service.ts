@@ -21,8 +21,9 @@ export class ImageBuilderService {
 
   url() {
     const base = `https://cdn.sanity.io/images/${this.projectId}/${this.dataset}/`;
-    const id = this.imageId.split('-').slice(1, -1);
-    let shortId = id.join('-');
-    return `${base}${shortId}.jpg`;
+    const id = this.imageId.split('-');
+    const format = id.pop();
+    let shortId = id.length > 0 ? id.slice(1).join('-') : id.join('-');
+    return `${base}${shortId}.${format}`;
   }
 }

@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
         this.sliderData = s;
       }),
       this.cms.brands$.subscribe((b) => {
-        console.log(b);
         this.brands = b;
       })
     );

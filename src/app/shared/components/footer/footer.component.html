@@ -1,3 +1,28 @@
-<footer class="container mx-auto">
-  <p>footer works!</p>
+<footer class="mt-24 bg-epc-d0 text-epc-w0">
+  @if (info.length > 0) {
+  <section class="container grid items-center grid-cols-6 mx-auto min-h-80">
+    <!-- COL 1 -->
+    <div class="relative col-span-2">
+      <div class="absolute left-0 flex items-center gap-2 -top-14">
+        <h3 class="font-bold uppercase"><span class="text-epc-r1">El Paisa</span> Cargo</h3>
+        <img src="/assets/images/favicon.svg" alt="El Paisa Logo" class="scale-x-[-1] w-12 pb-4">
+      </div>
+      <h6 class="w-2/3 font-light">Taxes, ITIN, Placas, Aseguranzas, Money Orders, Envío de Carros y Cajas, Envío de dinero, Pasajes</h6>
+    </div>
+
+    <!-- COL 2 -->
+    <ul class="relative flex flex-col gap-4">
+      @for (page of pages; track page._id; let index = $index){
+        <li class="hoverable" (mouseover)="hoveredItem = index">{{page.title}} {{index}}</li>
+      }
+      <span class="asterisk text-epc-r1" [style.top.px]="hoveredItem * 20">AQUIIII</span>
+    </ul>
+
+    <!-- COL 3 -->
+    <div class="col-span-3 list-none *:flex *:gap-2">
+      <li><i class="iconoir-phone text-epc-r1"></i>{{info[0].address}}</li>
+      <li><i class="iconoir-map-pin text-epc-r1"></i>{{info[0].phone}}</li>
+    </div>
+  </section>
+  }
 </footer>
