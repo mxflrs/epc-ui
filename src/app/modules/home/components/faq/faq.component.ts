@@ -1,11 +1,12 @@
-import { Component, Input, OnChanges, OnInit, signal } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { Faq } from '../../../../../domain/faq';
 import { Services } from '../../../../../domain/services';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-faq',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss',
 })
@@ -15,7 +16,7 @@ export class FaqComponent implements OnInit {
   public currentFaq = signal(0);
   public lastFaq = signal(0);
 
-  constructor() {  }
+  constructor() {}
 
   ngOnInit(): void {
     if (this.faqs.length > 0) {
@@ -23,19 +24,28 @@ export class FaqComponent implements OnInit {
     }
   }
 
-  nextFaq() {
-    if (this.currentFaq() === this.lastFaq()) {
-      this.currentFaq.set(0);
-    } else {
-      this.currentFaq.update((value) => value + 1);
-    }
+  get currentService() {
+    const current = this.services.find((s) => s._id === this.faqs[this.currentFaq()].category._ref);
+    return current?.parentService;
   }
 
-  prevFaq() {
-    if (this.currentFaq() === 0) {
-      this.currentFaq.set(this.faqs.length - 1);
-    } else {
-      this.currentFaq.update((value) => value - 1);
-    }
+  // nextFaq() {
+  //   if (this.currentFaq() === this.lastFaq()) {
+  //     this.currentFaq.set(0);
+  //   } else {
+  //     this.currentFaq.update((value) => value + 1);
+  //   }
+  // }
+
+  // prevFaq() {
+  //   if (this.currentFaq() === 0) {
+  //     this.currentFaq.set(this.faqs.length - 1);
+  //   } else {
+  //     this.currentFaq.update((value) => value - 1);
+  //   }
+  // }
+
+  moveToFaq(i: number) {
+    this.currentFaq.set(i);
   }
 }
