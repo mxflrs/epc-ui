@@ -26,7 +26,9 @@ export class HomeComponent implements OnInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const scrollOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    this.scrollingSection.nativeElement.scrollLeft = scrollOffset;
+    if (this.scrollingSection && this.scrollingSection.nativeElement) {
+      this.scrollingSection.nativeElement.scrollLeft = scrollOffset;
+    }
   }
 
   ngOnInit(): void {

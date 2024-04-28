@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+  public showSidebar = signal(true);
 
+  constructor(private sidebarService: SidebarService) {}
+
+  ngOnInit(): void {
+    this.showSidebar.set(this.sidebarService.show);
+  }
+
+  handleShowSidebar() {
+    this.sidebarService.onShowSidebar(!this.showSidebar());
+  }
 }

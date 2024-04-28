@@ -14,6 +14,8 @@ import { NgOptimizedImage } from '@angular/common';
 import { ServiciosGridComponent } from './modules/home/components/servicios-grid/servicios-grid.component';
 import { FaqComponent } from './modules/home/components/faq/faq.component';
 import { MarcasComponent } from './modules/home/components/marcas/marcas.component';
+import { SocialMediaComponent } from './shared/components/social-media/social-media.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { MarcasComponent } from './modules/home/components/marcas/marcas.compone
     NgOptimizedImage,
     ServiciosGridComponent,
     FaqComponent,
-    MarcasComponent
+    MarcasComponent,
+    SocialMediaComponent,
+    SidebarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
