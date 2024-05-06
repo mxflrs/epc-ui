@@ -16,6 +16,7 @@ import { FaqComponent } from './modules/home/components/faq/faq.component';
 import { MarcasComponent } from './modules/home/components/marcas/marcas.component';
 import { SocialMediaComponent } from './shared/components/social-media/social-media.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { ContactModalComponent } from 'src/app/modules/home/components/contact-modal/contact-modal.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     NavbarComponent,
     FooterComponent,
     NotFoundComponent,
+    ContactModalComponent
   ],
   imports: [
     BrowserModule,

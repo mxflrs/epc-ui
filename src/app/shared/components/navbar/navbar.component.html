@@ -2,9 +2,9 @@
   <nav class="container flex items-end justify-between mx-auto min-h-16">
 
     <!-- LOGO -->
-    <section class="relative">
+    <a href="/" class="relative">
       <app-logo />
-    </section>
+    </a>
 
     <!-- MENU -->
     <section class="flex items-center gap-8">
@@ -13,9 +13,11 @@
           <li class="text-xs font-bold uppercase">{{page.title}}</li>
         }
       </ul>
-      <button>
+      <button (click)="onOpenSidebar()">
         <i class="iconoir-menu"></i>
       </button>
     </section>
   </nav>
 </header>
+
+<app-sidebar />

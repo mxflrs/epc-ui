@@ -3,6 +3,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeroSlider } from '../../../../../domain/heroSlider';
 import { ImageBuilderService } from '../../../../shared/services/image-builder.service';
+import { ModalsService } from 'src/app/shared/services/modals.service';
 
 @Component({
   selector: 'app-slider',
@@ -27,7 +28,7 @@ export class SliderComponent {
   @Input() sliderData: HeroSlider[] = [];
   public currentSlide = 0;
 
-  constructor(private imageBuilder: ImageBuilderService) {}
+  constructor(private imageBuilder: ImageBuilderService, private modalServices: ModalsService) {}
 
   imageUrl(id: string) {
     return this.imageBuilder.image(id).url();
@@ -35,5 +36,9 @@ export class SliderComponent {
 
   nextSlide(i: number) {
     this.currentSlide = i;
+  }
+
+  onOpenContactModal() {
+    this.modalServices.toggleContactModal();
   }
 }

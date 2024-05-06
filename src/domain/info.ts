@@ -15,12 +15,11 @@ interface socialMedia {
 }
 
 interface businessHours {
-  weekdays: {
-    startDate: string
-    endDate: string
-  },
-  weekends: {
-    startDate: string
-    endDate: string
-  }
+  weekdays: hoursStructure
+  weekends: hoursStructure
+}
+
+interface hoursStructure {
+  startTime: string
+  endTime: string
 }

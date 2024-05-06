@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild, signal } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CmsService } from '../../shared/services/cms.service';
 import { Subscription } from 'rxjs';
 import { Services } from '../../../domain/services';
@@ -11,14 +11,13 @@ import { Brands } from '../../../domain/brands';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('scrollingSection') scrollingSection: ElementRef = new ElementRef(null);
 
   public services: Services[] = [];
   public faqs: Faq[] = [];
   public sliderData: HeroSlider[] = [];
   public brands: Brands[] = [];
-
   #subscriptions: Subscription[] = [];
 
   constructor(private cms: CmsService) {}
