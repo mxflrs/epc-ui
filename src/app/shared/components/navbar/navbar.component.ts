@@ -23,6 +23,10 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  navigateToPage() {
+
+  }
+
   ngOnDestroy(): void {
     this.#subscriptions.unsubscribe();
   }

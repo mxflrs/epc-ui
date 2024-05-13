@@ -1,33 +1,34 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { environment } from '../../../environment/environment';
 import { Faq } from '../../../domain/faq';
 import { Page } from '../../../domain/pages';
 import { HeroSlider } from '../../../domain/heroSlider';
 import { Info } from '../../../domain/info';
 import { Services } from '../../../domain/services';
 import { Brands } from '../../../domain/brands';
-// @ts-ignore
 import { ClientConfig, SanityClient, createClient } from '@sanity/client';
 import { DataType } from '../../../domain/dataType';
+import environment from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CmsService {
-  #dataSubject = new BehaviorSubject<any[]>([]);
 
-  #faqsSubject = new BehaviorSubject<Faq[]>([]);
-  faqs$ = this.#faqsSubject.asObservable();
+  /* eslint-disable */
+    #dataSubject = new BehaviorSubject<any[]>([]);
 
-  #pagesSubject = new BehaviorSubject<Page[]>([]);
-  pages$ = this.#pagesSubject.asObservable();
+    #faqsSubject = new BehaviorSubject<Faq[]>([]);
+    faqs$ = this.#faqsSubject.asObservable();
 
-  #heroSlidersSubject = new BehaviorSubject<HeroSlider[]>([]);
-  heroSliders$ = this.#heroSlidersSubject.asObservable();
+    #pagesSubject = new BehaviorSubject<Page[]>([]);
+    pages$ = this.#pagesSubject.asObservable();
 
-  #infoSubject = new BehaviorSubject<Info[]>([]);
-  info$ = this.#infoSubject.asObservable();
+    #heroSlidersSubject = new BehaviorSubject<HeroSlider[]>([]);
+    heroSliders$ = this.#heroSlidersSubject.asObservable();
+
+    #infoSubject = new BehaviorSubject<Info[]>([]);
+    info$ = this.#infoSubject.asObservable();
 
   #servicesSubject = new BehaviorSubject<Services[]>([]);
   services$ = this.#servicesSubject.asObservable();
