@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environment/environment';
+import environment from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,7 @@ export class ImageBuilderService {
     const base = `https://cdn.sanity.io/images/${this.projectId}/${this.dataset}/`;
     const id = this.imageId.split('-');
     const format = id.pop();
-    let shortId = id.length > 0 ? id.slice(1).join('-') : id.join('-');
+    const shortId = id.length > 0 ? id.slice(1).join('-') : id.join('-');
     return `${base}${shortId}.${format}`;
   }
 }

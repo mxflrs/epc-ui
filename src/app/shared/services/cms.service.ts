@@ -14,19 +14,19 @@ import { environment } from 'src/environment/environment';
   providedIn: 'root',
 })
 export class CmsService {
-  #dataSubject = new BehaviorSubject<Any>([]);
+    #dataSubject = new BehaviorSubject<Any>([]);
 
-  #faqsSubject = new BehaviorSubject<Faq[]>([]);
-  faqs$ = this.#faqsSubject.asObservable();
+    #faqsSubject = new BehaviorSubject<Faq[]>([]);
+    faqs$ = this.#faqsSubject.asObservable();
 
-  #pagesSubject = new BehaviorSubject<Page[]>([]);
-  pages$ = this.#pagesSubject.asObservable();
+    #pagesSubject = new BehaviorSubject<Page[]>([]);
+    pages$ = this.#pagesSubject.asObservable();
 
-  #heroSlidersSubject = new BehaviorSubject<HeroSlider[]>([]);
-  heroSliders$ = this.#heroSlidersSubject.asObservable();
+    #heroSlidersSubject = new BehaviorSubject<HeroSlider[]>([]);
+    heroSliders$ = this.#heroSlidersSubject.asObservable();
 
-  #infoSubject = new BehaviorSubject<Info[]>([]);
-  info$ = this.#infoSubject.asObservable();
+    #infoSubject = new BehaviorSubject<Info[]>([]);
+    info$ = this.#infoSubject.asObservable();
 
   #servicesSubject = new BehaviorSubject<Services[]>([]);
   services$ = this.#servicesSubject.asObservable();
