@@ -27,6 +27,13 @@ export class FooterComponent implements OnInit {
     );
   }
 
+  goTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
   ngOnDestroy(): void {
     this.#subscriptions.forEach((subscription) => subscription.unsubscribe());
   }

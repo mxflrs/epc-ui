@@ -23,8 +23,9 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  navigateToPage() {
-
+  navigateTo(slug: string) {
+    const element = document.getElementById(slug);
+    element?.scrollIntoView({behavior: 'smooth'});
   }
 
   ngOnDestroy(): void {

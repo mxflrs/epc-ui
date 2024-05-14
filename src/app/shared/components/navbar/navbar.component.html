@@ -1,4 +1,4 @@
-<header class="absolute top-0 left-0 z-10 w-full">
+<header class="absolute top-0 left-0 z-10 w-full" id="navbar">
   <nav class="container flex items-end justify-between mx-auto min-h-16">
 
     <!-- LOGO -->
@@ -10,8 +10,8 @@
     <section class="flex items-center gap-8">
       <ul class="flex gap-8">
         @for (page of pages(); track page._id) {
-          <li class="text-xs font-bold uppercase">
-            <a href="#{{page.slug.current}}">{{page.title}}</a>
+          <li class="text-xs font-bold *:uppercase">
+            <button (click)="navigateTo(page.slug.current)">{{page.title}}</button>
           </li>
         }
       </ul>
