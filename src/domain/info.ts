@@ -6,12 +6,14 @@ export interface Info extends BaseEntity {
     phone: string[]
     email: string | string[]
     socialMedia: socialMedia[]
-  businessHours: businessHours
+    businessHours: businessHours
 }
 
 interface socialMedia {
-  title: string
+  name: string
   link: string
+  key: string
+  icon?: string
 }
 
 interface businessHours {

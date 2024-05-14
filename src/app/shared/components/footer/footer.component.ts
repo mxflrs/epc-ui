@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CmsService } from '../../services/cms.service';
 import { Info } from '../../../../domain/info';
 import { Page } from '../../../../domain/pages';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
   info: Info[] = [];
   pages: Page[] = [];
   hoveredItem = 0;
@@ -20,6 +20,7 @@ export class FooterComponent implements OnInit {
     this.#subscriptions.push(
       this.#cms.info$.subscribe((info) => {
         this.info = info;
+        console.log(this.info)
       }),
       this.#cms.pages$.subscribe((pages) => {
         this.pages = pages;
