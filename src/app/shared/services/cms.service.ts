@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { environment } from '../../../environment/environment';
 import { Faq } from '../../../domain/faq';
 import { Page } from '../../../domain/pages';
 import { HeroSlider } from '../../../domain/heroSlider';
 import { Info } from '../../../domain/info';
 import { Services } from '../../../domain/services';
 import { Brands } from '../../../domain/brands';
-// @ts-ignore
-import { ClientConfig, SanityClient, createClient } from '@sanity/client';
+import { Any, ClientConfig, SanityClient, createClient } from '@sanity/client';
 import { DataType } from '../../../domain/dataType';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CmsService {
-  #dataSubject = new BehaviorSubject<any[]>([]);
+  #dataSubject = new BehaviorSubject<Any>([]);
 
   #faqsSubject = new BehaviorSubject<Faq[]>([]);
   faqs$ = this.#faqsSubject.asObservable();
@@ -39,9 +38,7 @@ export class CmsService {
 
   #clientConfig: ClientConfig = {
     projectId: environment.sanity.projectId,
-    dataset: environment.sanity.dataset,
-    apiVersion: environment.sanity.apiVersion,
-    useCdn: environment.sanity.useCdn,
+    dataset: environment.sanity.dataset
   };
 
   #sanityClient(): SanityClient {
@@ -68,7 +65,7 @@ export class CmsService {
     this.populateSubject(this.#servicesSubject, 'services', data);
   }
 
-  populateSubject(subject: BehaviorSubject<any[]>, type: string, data: DataType[]) {
+  populateSubject(subject: BehaviorSubject<Any>, type: string, data: DataType[]) {
     subject.next(data.filter((i: DataType) => i._type === type));
   }
 }
