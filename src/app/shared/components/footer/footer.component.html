@@ -1,6 +1,6 @@
 <footer class="pt-32 mt-24 bg-epc-d0 text-epc-w0">
   @if (info.length > 0) {
-  <section class="container grid items-start grid-cols-6 mx-auto min-h-64 justify-items-center">
+  <section class="container grid items-start grid-cols-6 mx-auto min-h-52 justify-items-center">
     <!-- COL 1 -->
     <div class="relative col-span-2">
       <div class="absolute left-0 flex items-center gap-2 -top-14">
@@ -26,4 +26,16 @@
     </div>
   </section>
   }
+
+  <div class="flex items-center justify-between w-full container *:text-xs py-4 *:text-epc-w2">
+    <p>All rights reserved  |  El Paisa Cargo 2024</p>
+    <div class="flex items-center justify-end gap-2 *:text-sm">
+      <!-- @for (info of info; track info._id)
+      {
+        <a [href]="info.socialMedia"><i class="iconoir-facebook text-epc-r1"></i></a>
+      } -->
+      <a><i class="iconoir-facebook text-epc-r1"></i></a>
+      <a><i class="iconoir-youtube text-epc-r1"></i></a>
+    </div>
+  </div>
 </footer>

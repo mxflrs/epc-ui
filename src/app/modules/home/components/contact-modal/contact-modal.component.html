@@ -3,21 +3,39 @@
     <div class="flex flex-col bg-slate-600 left-col">
     </div>
     <div class="flex flex-col col-span-2 p-8">
-      <h3>Contactanos!</h3>
+      <h3 class="pb-2">Contactanos!</h3>
       @if (info.length > 0) {
-      <p>{{info[0].phone}}</p>
-      <p>{{info[0].email}}</p>
-      <p>{{info[0].address}}</p>
 
-      <div class="flex gap-2">
-        <p>Lunes - Viernes</p>
-        <p>de {{info[0].businessHours.weekdays.startTime}} a {{info[0].businessHours.weekdays.endTime}}</p>
+      <div class="flex items-center gap-2">
+        <i class="iconoir-headset-help"></i>
+        <p>{{info[0].phone}}</p>
       </div>
 
-      <div class="flex gap-2">
-        <p>Sabado - Domingo</p>
-        <p>de {{info[0].businessHours.weekends.startTime}} a {{info[0].businessHours.weekends.endTime}}</p>
+      <div class="flex items-center gap-2">
+        <i class="iconoir-mail"></i>
+        <p>{{info[0].email}}</p>
       </div>
+
+      <div class="flex items-center gap-2">
+        <i class="iconoir-map"></i>
+        <p>{{info[0].address}}</p>
+      </div>
+
+      <div class="flex items-start gap-2">
+        <i class="pt-2 iconoir-clock"></i>
+        <div>
+          <div class="flex gap-2">
+            <p>Lunes - Viernes</p>
+            <p>de {{info[0].businessHours.weekdays.startTime}} a {{info[0].businessHours.weekdays.endTime}}</p>
+          </div>
+
+          <div class="flex gap-2">
+            <p>Sabado - Domingo</p>
+            <p>de {{info[0].businessHours.weekends.startTime}} a {{info[0].businessHours.weekends.endTime}}</p>
+          </div>
+        </div>
+      </div>
+
       }
     </div>
 
