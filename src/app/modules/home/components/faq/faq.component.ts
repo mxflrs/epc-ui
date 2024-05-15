@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, signal } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, signal } from '@angular/core';
 import { Faq } from '../../../../../domain/faq';
 import { Services } from '../../../../../domain/services';
 import { NgClass } from '@angular/common';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-faq',
@@ -10,42 +11,54 @@ import { NgClass } from '@angular/common';
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss',
 })
-export class FaqComponent implements OnInit {
+export class FaqComponent implements OnInit, OnDestroy {
   @Input() faqs: Faq[] = [];
   @Input() services: Services[] = [];
   public currentFaq = signal(0);
   public lastFaq = signal(0);
+  private faqIntervalSubscription: Subscription | undefined;
+  public isPaused = false;
 
   constructor() {}
 
   ngOnInit(): void {
-    if (this.faqs.length > 0) {
-      this.lastFaq.update(() => this.faqs.length - 1);
-    }
+      this.startFaqInterval();
+  }
+
+  startFaqInterval() {
+    this.faqIntervalSubscription = interval(5000).subscribe(() => {
+      if (!this.isPaused) {
+        this.moveToNextFaq();
+      }
+    });
+  }
+
+  pauseFaqInterval() {
+    this.isPaused = true;
+  }
+
+  resumeFaqInterval() {
+    this.isPaused = false;
   }
 
   get currentService() {
-    const current = this.services.find((s) => s._id === this.faqs[this.currentFaq()].category._ref);
+    const current = this.services.find(
+      (s) => s._id === this.faqs[this.currentFaq()].category._ref
+    );
     return current?.parentService;
   }
 
-  // nextFaq() {
-  //   if (this.currentFaq() === this.lastFaq()) {
-  //     this.currentFaq.set(0);
-  //   } else {
-  //     this.currentFaq.update((value) => value + 1);
-  //   }
-  // }
-
-  // prevFaq() {
-  //   if (this.currentFaq() === 0) {
-  //     this.currentFaq.set(this.faqs.length - 1);
-  //   } else {
-  //     this.currentFaq.update((value) => value - 1);
-  //   }
-  // }
-
   moveToFaq(i: number) {
     this.currentFaq.set(i);
+  }
+
+  moveToNextFaq() {
+    this.currentFaq.set((this.currentFaq() + 1) % this.faqs.length);
+  }
+
+  ngOnDestroy(): void {
+    if (this.faqIntervalSubscription) {
+      this.faqIntervalSubscription.unsubscribe();
+    }
   }
 }

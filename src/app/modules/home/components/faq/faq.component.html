@@ -1,4 +1,4 @@
-<section class="container py-24 mx-auto">
+<section class="container py-24 mx-auto" id="quienes-somos">
   <div class="grid grid-cols-2 gap-2 px-8 py-16 rounded-lg bg-epc-w0 min-h-[30rem] group drop-shadow-sm">
 
     @if (faqs.length > 0) {
@@ -20,6 +20,9 @@
               <button class="w-3 h-3 p-1 rounded-sm bg-slate-100 hover:bg-slate-300" [class.clicked]="index === currentFaq()" (click)="moveToFaq(index)">
               </button>
             }
+            <!-- <button class="w-3 h-3 p-1 rounded-sm bg-slate-100 hover:bg-slate-300" (mouseenter)="pauseFaqInterval()" (mouseleave)="resumeFaqInterval()">
+              <i class="iconoir-pause-solid text-epc-r1"></i>
+            </button> -->
           </div>
         </div>
 

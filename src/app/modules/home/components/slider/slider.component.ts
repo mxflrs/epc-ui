@@ -34,8 +34,24 @@ export class SliderComponent {
     return this.imageBuilder.image(id).url();
   }
 
-  nextSlide(i: number) {
+  goToSlide(i: number) {
     this.currentSlide = i;
+  }
+
+  nextSlide() {
+    if (this.currentSlide < this.sliderData.length - 1) {
+      this.currentSlide++
+    } else {
+      this.currentSlide = 0
+    }
+  }
+
+  prevSlide() {
+    if (this.currentSlide === 0) {
+      this.currentSlide = this.sliderData.length - 1
+    } else {
+      this.currentSlide--
+    }
   }
 
   onOpenContactModal() {

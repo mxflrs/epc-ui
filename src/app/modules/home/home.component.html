@@ -4,6 +4,8 @@
     <app-slider [sliderData]="sliderData" />
   </div>
 
+  <div class="spikes"></div>
+
   <div #scrollingSection class="flex items-center w-full gap-8 overflow-hidden bg-epc-r1 min-h-32 text-nowrap text-epc-r2">
     @for (service of services; track service._id){
     <a class="cursor-pointer hover:text-epc-w0">{{service.parentService}}</a>

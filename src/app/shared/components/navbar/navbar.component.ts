@@ -1,19 +1,20 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { CmsService } from '../../services/cms.service';
 import { Subscription } from 'rxjs';
 import { Page } from '../../../../domain/pages';
 import { SidebarService } from '../../services/sidebar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   #subscriptions: Subscription;
   public pages = signal<Page[]>([]);
 
-  constructor(private cms: CmsService, private sidebarService: SidebarService) {
+  constructor(private cms: CmsService, private sidebarService: SidebarService, private router: Router) {
     this.#subscriptions = new Subscription();
   }
 
@@ -25,7 +26,9 @@ export class NavbarComponent implements OnInit {
 
   navigateTo(slug: string) {
     const element = document.getElementById(slug);
-    element?.scrollIntoView({behavior: 'smooth'});
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   ngOnDestroy(): void {

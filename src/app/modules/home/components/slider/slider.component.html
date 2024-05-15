@@ -17,12 +17,13 @@
       [@slideIn]
       alt="hero"
       class="rounded-lg">
-    <!-- <i class="absolute p-4 rounded-md -bottom-3 -left-3 iconoir-arrow-up-right bg-epc-r1 text-epc-w0"></i> -->
     <div class="z-10 flex justify-end gap-4 pt-4">
+      <button class="-mt-1" (click)="prevSlide()"><i class="iconoir-arrow-left text-epc-d2 hover:text-epc-d0"></i></button>
       @for (slider of sliderData; track slider._id; let index = $index) {
-        <button class="w-3 h-3 p-1 rounded-sm bg-epc-r0 hover:bg-epc-r2" (click)="nextSlide(index)">
+        <button class="w-3 h-3 p-1 rounded-sm bg-epc-r0 hover:bg-epc-r2" (click)="goToSlide(index)">
         </button>
       }
+      <button class="-mt-1" (click)="nextSlide()"><i class="iconoir-arrow-right text-epc-d2 hover:text-epc-d0"></i></button>
     </div>
   </div>
 </div>
