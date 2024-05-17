@@ -11,17 +11,11 @@ import { Services } from '../../../../../domain/services';
 export class ServiciosGridComponent {
   @ViewChildren('card') cellElements!: QueryList<ElementRef>;
   @Input() services: Services[] = [];
-  public selectedColumn: string | null = null;
+  public selectedService: Services | null = null;
 
-  onColumnClick(id: string | undefined) {
-    if (this.selectedColumn === id) {
-      this.selectedColumn = null;
-    } else if (id) {
-      this.selectedColumn = id;
-      setTimeout(() => {
-        this.scrollToSelectedCell(id);
-      });
-    }
+
+  onColumnClick(service: Services) {
+    this.selectedService = service;
   }
 
   scrollToSelectedCell(cellId: string): void {
@@ -31,4 +25,7 @@ export class ServiciosGridComponent {
     }
   }
 
+  closeContactModal(): void {
+    this.selectedService = null;
+  }
 }

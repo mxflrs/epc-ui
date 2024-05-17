@@ -9,11 +9,11 @@
     <div class="h-full p-4 rounded-lg bg-epc-r1 max-w-[32rem] content w-full" [@slideIn]>
       <ul class="flex flex-col gap-6 p-2 pt-16">
         @for(service of services; track service._id){
-        <li class="font-semibold cursor-pointer text-epc-w0 hover:text-epc-d0" (click)="selectedServiceId = service._id">
-          <div class="flex items-center gap-2">
+        <button class="font-semibold cursor-pointer text-epc-w0 hover:text-epc-d0" (click)="selectedServiceId = service._id">
+          <li class="flex items-center gap-2">
             <i class="iconoir-{{service.icon}}"></i>
             <p class="text-xs">{{service.parentService}}</p>
-          </div>
+          </li>
           @if(selectedServiceId === service._id){
             <ul class="flex flex-col gap-2 px-4 py-2 my-2 text-xs rounded-sm bg-epc-r2 hover:text-epc-w0">
               @for(sub of service.subservices; track $index){
@@ -23,7 +23,7 @@
               }
             </ul>
           }
-        </li>
+        </button>
         }
       </ul>
     </div>
