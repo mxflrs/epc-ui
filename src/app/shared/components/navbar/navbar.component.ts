@@ -3,7 +3,7 @@ import { CmsService } from '../../services/cms.service';
 import { Subscription } from 'rxjs';
 import { Page } from '../../../../domain/pages';
 import { SidebarService } from '../../services/sidebar.service';
-import { Router } from '@angular/router';
+import { ModalsService } from 'src/app/shared/services/modals.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   #subscriptions: Subscription;
   public pages = signal<Page[]>([]);
 
-  constructor(private cms: CmsService, private sidebarService: SidebarService, private router: Router) {
+  constructor(private cms: CmsService, private sidebarService: SidebarService, private modalService: ModalsService) {
     this.#subscriptions = new Subscription();
   }
 
@@ -27,7 +27,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   navigateTo(slug: string) {
     const element = document.getElementById(slug);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView();
+    }
+
+    if (slug === 'contacto') {
+      this.modalService.toggleContactModal();
     }
   }
 
@@ -37,5 +41,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onOpenSidebar() {
     this.sidebarService.toggleSidebar();
+  }
+
+  onOpenContactModal() {
+    this.modalService.toggleContactModal();
   }
 }

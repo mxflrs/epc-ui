@@ -20,7 +20,6 @@ export class FooterComponent implements OnInit, OnDestroy {
     this.#subscriptions.push(
       this.#cms.info$.subscribe((info) => {
         this.info = info;
-        console.log(this.info)
       }),
       this.#cms.pages$.subscribe((pages) => {
         this.pages = pages;
