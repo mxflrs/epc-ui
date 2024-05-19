@@ -1,22 +1,25 @@
 <section class="container grid grid-cols-6 mx-auto my-24">
-
   <!-- INTRO -->
-  <h2 class="col-span-4">¡Estamos aquí para brindarte todo el apoyo<br /> que necesites en cada paso del camino!</h2>
+  <h2 class="col-span-4">
+    ¡Estamos aquí para brindarte todo el apoyo<br />
+    que necesites en cada paso del camino!
+  </h2>
   <div class="col-span-2">
-    <h6>Desde resolver tus consultas más simples hasta abordar desafíos más complejos, nuestro compromiso es estar a tu
-      lado en cada paso del proceso.</h6>
+    <h6>
+      Desde resolver tus consultas más simples hasta abordar desafíos más
+      complejos, nuestro compromiso es estar a tu lado en cada paso del proceso.
+    </h6>
   </div>
 </section>
 
-
 <!-- SERVICES -->
 <section class="container grid grid-cols-3 gap-8 mx-auto" id="servicios">
-  @for (service of services; track service._id){
-  <button class="card group" (click)="onColumnClick(service)">
-    <h3 class="text-left">{{service.parentService}}</h3>
-    <p class="text-xs">{{service.description}}</p>
+  @for (service of services; track $index){
+  <button class="card group" (click)="onColumnClick($index)">
+    <h3 class="text-left">{{ service.parentService }}</h3>
+    <p class="text-xs">{{ service.description }}</p>
     <div class="icon">
-      <i class="iconoir-{{service.icon}}"></i>
+      <i class="iconoir-{{ service.icon }}"></i>
     </div>
   </button>
   }
@@ -24,24 +27,46 @@
 
 <!-- MODAL -->
 
-  @if (selectedService) {
-    <div class="fixed top-0 right-0 z-20 flex items-center justify-center w-full h-screen bg-epc-d1 backdrop-blur-md">
-      <div class="relative w-2/3 max-w-2xl p-8 rounded-md bg-epc-w0 max-h-2/3">
-        <button class="absolute flex items-center justify-center rounded-md size-8 -right-2 -top-2 bg-epc-d0 text-epc-w0 hover:text-epc-r1 hover:bg-epc-o0"
-        (click)="closeContactModal()">x</button>
-        <div class="flex items-center gap-2 p-4 mb-4 rounded-md bg-epc-r1 text-epc-w0">
-          <i class="iconoir-{{selectedService.icon}} text-4xl text-epc-d0"></i>
-          <h2>{{selectedService.parentService}}</h2>
-        </div>
-        <div class="flex flex-col justify-start gap-1 pl-4">
-          @for (subservice of selectedService.subservices; track $index) {
-            <div class="flex items-center justify-start gap-4">
-              <span class="w-3 h-3 pt-4 rounded-sm bg-epc-r0 hover:bg-epc-r2">
-              </span>
-              <p>{{subservice.service}}</p>
-            </div>
-            }
-        </div>
-      </div>
+@if (selectedService) {
+<div
+  class="fixed top-0 right-0 z-20 flex items-center justify-center w-full h-screen bg-epc-d1 backdrop-blur-md"
+>
+  <!-- MAIN -->
+  <div class="relative w-2/3 max-w-2xl p-8 rounded-md bg-epc-w0 max-h-2/3">
+    <button
+      class="absolute flex items-center justify-center rounded-md size-8 -right-2 -top-2 bg-epc-d0 text-epc-w0 hover:text-epc-r1 hover:bg-epc-o0"
+      (click)="closeContactModal()"
+    >
+      x
+    </button>
+    <div
+      class="flex items-center gap-2 p-4 mb-4 rounded-md bg-epc-r1 text-epc-w0"
+    >
+      <i class="iconoir-{{ selectedService.icon }} text-4xl text-epc-d0"></i>
+      <h2>{{ selectedService.parentService }}</h2>
     </div>
-  }
+    <div class="flex flex-col justify-start gap-1 pl-4">
+      @for (subservice of selectedService.subservices; track $index) {
+      <div class="flex items-center justify-start gap-4">
+        <span class="w-3 h-3 pt-4 rounded-sm bg-epc-r0 hover:bg-epc-r2"> </span>
+        <p>{{ subservice.service }}</p>
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- NEXT SERVICE -->
+  <button
+  (click)="onNextService()"
+  class="absolute flex items-center w-auto h-8 p-4 rounded-sm right-8 bg-epc-w2 hover:bg-epc-r1 text-epc-w0">
+    <i class="iconoir-arrow-up-right"></i>
+  </button>
+
+  <!-- PREV SERVICE -->
+  <button
+  (click)="onPrevService()"
+  class="absolute flex items-center w-auto h-8 p-4 rounded-sm left-8 bg-epc-w2 hover:bg-epc-r1 text-epc-w0">
+    <i class="iconoir-arrow-down-left"></i>
+  </button>
+</div>
+}

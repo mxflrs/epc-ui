@@ -33,7 +33,8 @@ export class ContactModalComponent implements OnInit {
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
+
+    if (this.openContactModal && event.key === 'Escape') {
       this.closeContactModal();
     }
   }

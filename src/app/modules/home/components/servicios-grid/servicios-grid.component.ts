@@ -1,4 +1,11 @@
-import { Component, ElementRef, Input, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  Input,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { Services } from '../../../../../domain/services';
 
 @Component({
@@ -12,10 +19,15 @@ export class ServiciosGridComponent {
   @ViewChildren('card') cellElements!: QueryList<ElementRef>;
   @Input() services: Services[] = [];
   public selectedService: Services | null = null;
+  public nextService: Services | null = null;
+  public prevService: Services | null = null;
+  public currentIndex = 0;
 
-
-  onColumnClick(service: Services) {
-    this.selectedService = service;
+  onColumnClick(index: number) {
+    this.selectedService = this.services[index];
+    this.nextService = index + 1 !== this.services.length ? this.services[index + 1] : this.services[0];
+    this.prevService = index === 0 ? this.services[this.services.length - 1] : this.services[index - 1];
+    this.currentIndex = index;
   }
 
   scrollToSelectedCell(cellId: string): void {
@@ -27,5 +39,23 @@ export class ServiciosGridComponent {
 
   closeContactModal(): void {
     this.selectedService = null;
+  }
+
+  onNextService() {
+    this.selectedService = this.nextService;
+    const nextIndex = this.currentIndex + 1 !== this.services.length ? this.currentIndex + 1 : 0;
+    this.onColumnClick(nextIndex);
+  }
+
+  onPrevService() {
+    this.selectedService = this.prevService;
+    const prevIndex = this.currentIndex === 0 ? this.services.length - 1 : this.currentIndex - 1;
+    this.onColumnClick(prevIndex);
+  }
+
+  @HostListener('document:keydown.escape') onKeydownHandler() {
+    if (this.selectedService) {
+      this.selectedService = null;
+    }
   }
 }
