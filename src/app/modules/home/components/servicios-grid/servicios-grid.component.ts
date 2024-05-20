@@ -17,6 +17,7 @@ import { Services } from '../../../../../domain/services';
 })
 export class ServiciosGridComponent {
   @ViewChildren('card') cellElements!: QueryList<ElementRef>;
+
   @Input() services: Services[] = [];
   public selectedService: Services | null = null;
   public nextService: Services | null = null;

@@ -3,6 +3,7 @@ import { CmsService } from '../../services/cms.service';
 import { Info } from '../../../../domain/info';
 import { Page } from '../../../../domain/pages';
 import { Subscription } from 'rxjs';
+import { ModalsService } from 'src/app/shared/services/modals.service';
 
 @Component({
   selector: 'app-footer',
@@ -15,6 +16,7 @@ export class FooterComponent implements OnInit, OnDestroy {
   hoveredItem = 0;
   #cms = inject(CmsService);
   #subscriptions: Subscription[] = [];
+  #modalService = inject(ModalsService);
 
   ngOnInit(): void {
     this.#subscriptions.push(
@@ -32,6 +34,17 @@ export class FooterComponent implements OnInit, OnDestroy {
       top: 0,
       behavior: 'smooth'
     });
+  }
+
+  navigateTo(slug: string) {
+    const element = document.getElementById(slug);
+    if (element) {
+      element.scrollIntoView();
+    }
+
+    if (slug === 'contacto') {
+      this.#modalService.toggleContactModal();
+    }
   }
 
   ngOnDestroy(): void {

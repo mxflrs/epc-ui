@@ -13,7 +13,6 @@ import { Brands } from '../../../domain/brands';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('scrollingSection') scrollingSection: ElementRef = new ElementRef(null);
-
   public services: Services[] = [];
   public faqs: Faq[] = [];
   public sliderData: HeroSlider[] = [];
@@ -21,14 +20,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   #subscriptions: Subscription[] = [];
 
   constructor(private cms: CmsService) {}
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const scrollOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if (this.scrollingSection && this.scrollingSection.nativeElement) {
-      this.scrollingSection.nativeElement.scrollLeft = scrollOffset;
-    }
-  }
 
   ngOnInit(): void {
     this.#subscriptions.push(
@@ -47,6 +38,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     );
   }
 
+  onColumnClick(index: number) {
+    console.log('Column clicked', index);
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (this.scrollingSection && this.scrollingSection.nativeElement) {
+      this.scrollingSection.nativeElement.scrollLeft = scrollOffset;
+    }
+  }
   ngOnDestroy(): void {
     this.#subscriptions.forEach(subscription => subscription.unsubscribe());
   }

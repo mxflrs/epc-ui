@@ -14,6 +14,7 @@ interface socialMedia {
   link: string
   key: string
   icon?: string
+  color?: string
 }
 
 interface businessHours {

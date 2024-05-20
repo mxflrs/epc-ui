@@ -16,7 +16,7 @@
     <ul class="relative flex flex-col gap-2 *:transition-all *:duration-200">
       @for (page of pages; track page._id; let index = $index){
         <li class="hover:text-epc-r1 hover:-translate-x-2 *:flex *:gap-2 group">
-          <a href="" class="text-xs"><i class="iconoir-nav-arrow-right text-epc-w1 group-hover:text-epc-r1"></i>{{page.title}}</a>
+          <button (click)="navigateTo(page.slug.current)" class="text-xs"><i class="iconoir-nav-arrow-right text-epc-w1 group-hover:text-epc-r1"></i>{{page.title}}</button>
         </li>
       }
     </ul>
@@ -33,15 +33,7 @@
   </section>
   }
 
-  <div class="flex items-center justify-between w-full container *:text-xs py-4 *:text-epc-w2">
+  <div class="flex items-center justify-center w-full container *:text-xs py-4 *:text-epc-w2">
     <p>All rights reserved  |  El Paisa Cargo 2024</p>
-    <div class="flex items-center justify-end gap-2 *:text-sm">
-      <!-- @for (info of info; track info._id)
-      {
-        <a [href]="info.socialMedia"><i class="iconoir-facebook text-epc-r1"></i></a>
-      } -->
-      <a><i class="iconoir-facebook text-epc-r1"></i></a>
-      <a><i class="iconoir-youtube text-epc-r1"></i></a>
-    </div>
   </div>
 </footer>

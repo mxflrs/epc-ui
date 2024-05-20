@@ -6,6 +6,7 @@ export interface Services extends BaseEntity {
   icon: string
   slug: string
   subservices: subServices[]
+  image: string
 }
 
 interface subServices {

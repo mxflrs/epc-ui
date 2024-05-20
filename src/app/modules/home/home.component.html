@@ -7,11 +7,17 @@
   <div class="spikes"></div>
 
   <div #scrollingSection class="flex items-center w-full gap-8 overflow-hidden bg-epc-r1 min-h-32 text-nowrap text-epc-r2">
-    @for (service of services; track service._id){
-    <a class="cursor-pointer hover:text-epc-w0">{{service.parentService}}</a>
+    @for (service of services; track $index){
+      <button class="relative group" (click)="onColumnClick($index)">
+        <div class="absolute z-40 items-center justify-end hidden w-auto p-1 text-lg rounded-md group-hover:flex -right-10 bg-epc-o1 text-epc-r1">
+          <i class="iconoir-{{service.icon}}"></i>
+        </div>
+        <a class="cursor-pointer group-hover:text-epc-w0">{{service.parentService}}</a>
+      </button>
     <span>/</span>
     }
   </div>
+
 
 </section>
 
