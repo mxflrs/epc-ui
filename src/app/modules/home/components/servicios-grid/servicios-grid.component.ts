@@ -2,16 +2,19 @@ import {
   Component,
   ElementRef,
   HostListener,
+  inject,
   Input,
   QueryList,
   ViewChildren,
 } from '@angular/core';
 import { Services } from '../../../../../domain/services';
+import { CommonModule } from '@angular/common';
+import { ImageBuilderService } from 'src/app/shared/services/image-builder.service';
 
 @Component({
   selector: 'app-servicios-grid',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './servicios-grid.component.html',
   styleUrl: './servicios-grid.component.scss',
 })
@@ -23,12 +26,20 @@ export class ServiciosGridComponent {
   public nextService: Services | null = null;
   public prevService: Services | null = null;
   public currentIndex = 0;
+  #imageBuilder = inject(ImageBuilderService);
 
   onColumnClick(index: number) {
     this.selectedService = this.services[index];
     this.nextService = index + 1 !== this.services.length ? this.services[index + 1] : this.services[0];
     this.prevService = index === 0 ? this.services[this.services.length - 1] : this.services[index - 1];
     this.currentIndex = index;
+  }
+
+  imageUrl(id: string) {
+    if (id) {
+      return this.#imageBuilder.image(id).url();
+    }
+    return '';
   }
 
   scrollToSelectedCell(cellId: string): void {
