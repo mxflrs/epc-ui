@@ -25,7 +25,7 @@ export class ServiciosGridComponent {
   public selectedService: Services | null = null;
   public nextService: Services | null = null;
   public prevService: Services | null = null;
-  public currentIndex = 0;
+  public currentIndex: number = -1;
   #imageBuilder = inject(ImageBuilderService);
 
   onColumnClick(index: number) {
@@ -36,10 +36,7 @@ export class ServiciosGridComponent {
   }
 
   imageUrl(id: string) {
-    if (id) {
-      return this.#imageBuilder.image(id).url();
-    }
-    return '';
+    return this.#imageBuilder.image(id).url();
   }
 
   scrollToSelectedCell(cellId: string): void {
@@ -63,6 +60,10 @@ export class ServiciosGridComponent {
     this.selectedService = this.prevService;
     const prevIndex = this.currentIndex === 0 ? this.services.length - 1 : this.currentIndex - 1;
     this.onColumnClick(prevIndex);
+  }
+
+  setCurrentIndex(index?: number) {
+    this.currentIndex = index ? index : -1;
   }
 
   @HostListener('document:keydown.escape') onKeydownHandler() {

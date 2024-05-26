@@ -27,8 +27,13 @@ import { ModalsService } from 'src/app/shared/services/modals.service';
 export class SliderComponent {
   @Input() sliderData: HeroSlider[] = [];
   public currentSlide = 0;
+  public keepSlideWide = true;
 
-  constructor(private imageBuilder: ImageBuilderService, private modalServices: ModalsService) {}
+  constructor(private imageBuilder: ImageBuilderService, private modalServices: ModalsService) {
+    setTimeout(() => {
+      this.keepSlideWide = false;
+    }, 6000);
+  }
 
   imageUrl(id: string) {
     return this.imageBuilder.image(id).url();

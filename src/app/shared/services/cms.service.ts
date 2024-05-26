@@ -38,7 +38,9 @@ export class CmsService {
 
   #clientConfig: ClientConfig = {
     projectId: environment.sanity.projectId,
-    dataset: environment.sanity.dataset
+    dataset: environment.sanity.dataset,
+    apiVersion: environment.sanity.apiVersion,
+    useCdn: environment.sanity.useCdn
   };
 
   #sanityClient(): SanityClient {

@@ -15,6 +15,7 @@ export class SocialMediaComponent implements OnInit, OnDestroy {
   #cmsService = inject(CmsService);
   #subscriptions: Subscription[] = [];
   info: Info[] = [];
+  public selectedButtonIndex = -1;
 
   ngOnInit(): void {
     this.#subscriptions.push(
@@ -22,6 +23,10 @@ export class SocialMediaComponent implements OnInit, OnDestroy {
         this.info = info;
       })
     );
+  }
+
+  onButtonHover(index?: number) {
+    this.selectedButtonIndex = index ? index : -1;
   }
 
   ngOnDestroy(): void {

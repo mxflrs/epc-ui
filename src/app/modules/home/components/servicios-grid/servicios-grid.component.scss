@@ -1,5 +1,6 @@
 .card {
-  @apply relative flex flex-col justify-end gap-1 p-8 rounded-lg min-h-40 bg-epc-w0 hover:bg-epc-d0 hover:text-epc-w0 drop-shadow-sm duration-300 hover:drop-shadow-none
+  @apply relative flex flex-col justify-end gap-1 p-8 rounded-lg min-h-40 bg-epc-w0 hover:bg-epc-d0 hover:text-epc-w0 drop-shadow-sm duration-300 hover:drop-shadow-none;
+  transition: background-image 0.5s ease-in-out;
 }
 
 

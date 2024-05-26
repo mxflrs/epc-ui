@@ -1,7 +1,9 @@
 <div class="fixed right-0 flex items-center h-screen p-2">
   <div class="flex flex-col *:bg-slate-300 gap-2 *:rounded-sm *:opacity-40">
-    <!-- @for (social of info[0].socialMedia; track $index) {
-      <a target="_blank" [href]="social.link" class="p-2 text-center hover:bg-epc-d1 hover:opacity-100">{{social.icon}}</a>
-    } -->
+    @if(info.length > 0) {
+      @for (social of info[0].socialMedia; track $index) {
+        <a target="_blank" [href]="social.link" [class]="social.color + ' p-2 text-center text-xs'">{{social.name}}</a>
+      }
+    }
   </div>
 </div>

@@ -1,7 +1,7 @@
 @if (sliderData.length > 0) {
 <div class="grid items-center h-full grid-cols-6 gap-8 content-evenly">
   <!-- LEFT COL -->
-  <div class="flex flex-col justify-end h-full col-span-2 gap-4">
+  <div [ngClass]="keepSlideWide ? 'hidden' : 'flex'" class="flex-col justify-end h-full col-span-2 gap-4">
     <h1>{{sliderData[currentSlide].title}}</h1>
     <p class="max-w-96">{{sliderData[currentSlide].description}}</p>
     <button class="flex items-center gap-2 px-8 py-4 mr-auto rounded-lg bg-epc-w0" (click)="onOpenContactModal()">
@@ -11,7 +11,7 @@
   </div>
 
   <!-- RIGHT COL -->
-  <div class="col-span-4 overflow-hidden">
+  <div [ngClass]="keepSlideWide ? 'col-span-6' : 'col-span-4'" class="overflow-hidden">
     <img
       [src]="imageUrl(sliderData[currentSlide].image.asset._ref)+'?blur=500&q=10&fm=webp'"
       [@slideIn]
