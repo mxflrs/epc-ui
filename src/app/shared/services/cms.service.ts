@@ -8,7 +8,7 @@ import { Services } from '../../../domain/services';
 import { Brands } from '../../../domain/brands';
 import { Any, ClientConfig, SanityClient, createClient } from '@sanity/client';
 import { DataType } from '../../../domain/dataType'
-import environment from 'src/environment/environment';
+import environment from 'src/environment/environment.development';
 
 @Injectable({
   providedIn: 'root',
