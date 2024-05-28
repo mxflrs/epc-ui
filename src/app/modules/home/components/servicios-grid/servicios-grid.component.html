@@ -1,10 +1,10 @@
-<section class="container grid grid-cols-6 mx-auto my-24">
+<section class="container grid grid-cols-6 mx-auto my-24 lg:w-full w-[80vw]">
   <!-- INTRO -->
-  <h2 class="col-span-4">
+  <h2 class="col-span-6 text-center lg:col-span-4 lg:text-left">
     ¡Estamos aquí para brindarte todo el apoyo<br />
     que necesites en cada paso del camino!
   </h2>
-  <div class="col-span-2">
+  <div class="col-span-6 text-center lg:col-span-2 lg:text-justify">
     <h6>
       Desde resolver tus consultas más simples hasta abordar desafíos más
       complejos, nuestro compromiso es estar a tu lado en cada paso del proceso.
@@ -13,7 +13,7 @@
 </section>
 
 <section
-  class="container grid grid-cols-3 gap-8 mx-auto"
+  class="container grid grid-cols-2 gap-8 mx-auto lg:grid-cols-3"
   id="servicios"
   *ngIf="services[0]?.image"
 >
@@ -27,7 +27,7 @@
     (mouseleave)="setCurrentIndex()"
   >
     <h3 class="text-left">{{ service.parentService }}</h3>
-    <p class="text-xs">{{ service.description }}</p>
+    <p class="text-xs text-left">{{ service.description }}</p>
     <div class="icon">
       <i class="iconoir-{{ service.icon }}"></i>
     </div>

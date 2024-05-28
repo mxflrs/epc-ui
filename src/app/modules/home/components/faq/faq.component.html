@@ -1,5 +1,5 @@
 <section class="container py-24 mx-auto" id="quienes-somos">
-  <div class="grid grid-cols-2 gap-2 px-8 py-16 rounded-lg bg-epc-w0 min-h-[30rem] group drop-shadow-sm">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 px-8 py-16 rounded-lg bg-epc-w0 min-h-[30rem] group drop-shadow-sm">
 
     @if (faqs.length > 0) {
       <div class="flex flex-col justify-end flex-1">
@@ -20,16 +20,13 @@
               <button class="w-3 h-3 p-1 rounded-sm bg-slate-100 hover:bg-slate-300" [class.clicked]="index === currentFaq()" (click)="moveToFaq(index)">
               </button>
             }
-            <!-- <button class="w-3 h-3 p-1 rounded-sm bg-slate-100 hover:bg-slate-300" (mouseenter)="pauseFaqInterval()" (mouseleave)="resumeFaqInterval()">
-              <i class="iconoir-pause-solid text-epc-r1"></i>
-            </button> -->
           </div>
         </div>
 
       </div>
     }
 
-    <div class="relative flex flex-col items-center justify-center">
+    <div class="relative flex-col items-center justify-center hidden lg:flex">
       <h3 class="absolute top-0 px-8 py-2 transition-all duration-700 rounded-md bg-epc-r1 -right-12 text-epc-w0 group-hover:right-8">Preguntas Frecuentes</h3>
       <img src="/assets/images/epc-logo-off.svg" alt="">
     </div>

@@ -30,9 +30,9 @@ export class SliderComponent {
   public keepSlideWide = true;
 
   constructor(private imageBuilder: ImageBuilderService, private modalServices: ModalsService) {
-    setTimeout(() => {
-      this.keepSlideWide = false;
-    }, 6000);
+    // setTimeout(() => {
+    //   this.keepSlideWide = false;
+    // }, 6000);
   }
 
   imageUrl(id: string) {

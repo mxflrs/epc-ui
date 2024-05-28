@@ -1,7 +1,6 @@
-import { Component, OnChanges, OnInit, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../services/sidebar.service';
-import { animate, style, transition, trigger } from '@angular/animations';
-import { fadeAnimation, slideInAnimation } from '../../animations/animations';
+import { slideInAnimation } from '../../animations/animations';
 import { CmsService } from '../../services/cms.service';
 import { Services } from '../../../../domain/services';
 

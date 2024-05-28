@@ -17,3 +17,10 @@ section {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
+
+@media (min-width: 768px) {
+  .left-col {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0;
+  }
+}

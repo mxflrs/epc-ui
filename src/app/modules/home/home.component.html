@@ -1,12 +1,12 @@
 <section class="flex flex-col justify-between pt-2 mb-24 h-svh">
 
-  <div class="container items-center justify-center flex-1 mx-auto">
+  <div class="container flex items-center justify-center flex-1 h-full mx-auto my-auto">
     <app-slider [sliderData]="sliderData" />
   </div>
 
-  <div class="spikes"></div>
+  <div class="z-0 lg:z-20 spikes"></div>
 
-  <div #scrollingSection class="flex items-center w-full gap-8 overflow-hidden bg-epc-r1 min-h-32 text-nowrap text-epc-r2">
+  <div #scrollingSection class="z-10 flex items-center w-full gap-8 overflow-hidden bg-epc-r1 min-h-32 text-nowrap text-epc-r2">
     @for (service of services; track $index){
       <button class="relative group" (click)="onColumnClick($index)">
         <div class="absolute z-40 items-center justify-end hidden w-auto p-1 text-lg rounded-md group-hover:flex -right-10 bg-epc-o1 text-epc-r1">
