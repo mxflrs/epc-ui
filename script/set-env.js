@@ -11,9 +11,9 @@ fs.readFile(templateFilePath, 'utf8', (err, data) => {
   }
 
   const result = data
-    .replace('PROJECT_ID_PLACEHOLDER', process.env.PROJECT_ID)
+    .replace('PROJECT_ID_PLACEHOLDER', process.env.PROJECTID)
     .replace('DATASET_PLACEHOLDER', process.env.DATASET)
-    .replace('API_VERSION_PLACEHOLDER', process.env.API_VERSION);
+    .replace('API_VERSION_PLACEHOLDER', process.env.APIVERSION);
 
   fs.writeFile(envFilePath, result, 'utf8', (err) => {
     if (err) {
