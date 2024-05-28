@@ -1,5 +1,5 @@
 @if (sliderData.length > 0) {
-<div class="grid items-center h-auto grid-cols-6 gap-8 my-auto lg:h-full content-evenly">
+<div class="grid items-center h-auto grid-cols-6 gap-2 my-auto lg:h-full content-evenly">
 
   <!-- BG -->
   <span class="absolute top-0 left-0 z-10 block w-full h-full bg-cover bg-gradient-to-t from-epc-d0 to-transparent lg:hidden"></span>
@@ -9,7 +9,7 @@
 
   <!-- LEFT COL -->
   <div class="z-10 flex flex-col items-center justify-end h-full col-span-6 gap-4 pt-24 lg:col-span-2 lg:items-start">
-    <h1 class="text-center lg:text-left lg:max-w-96 max-w-[80vw] text-epc-w0 lg:text-epc-d0">{{sliderData[currentSlide].title}}</h1>
+    <h1 class="text-center lg:text-left lg:max-w-[28rem] max-w-[80vw] text-epc-w0 lg:text-epc-d0 text-balance">{{sliderData[currentSlide].title}}</h1>
     <p class="w-full text-center max-w-96 lg:text-left lg:text-epc-d0 text-epc-w0">{{sliderData[currentSlide].description}}</p>
     <button class="flex items-center gap-2 px-8 py-4 rounded-lg lg:mr-auto bg-epc-w0" (click)="onOpenContactModal()">
       <i class="iconoir-phone"></i>
@@ -20,7 +20,7 @@
   <!-- RIGHT COL -->
   <div class="z-10 col-span-6 overflow-hidden lg:col-span-4">
     <img
-      [src]="imageUrl(sliderData[currentSlide].image.asset._ref)+'?blur=500&q=10&fm=webp'"
+      [src]="imageUrl(sliderData[currentSlide].image.asset._ref)+'?q=40&fm=webp&w=1600'"
       [@slideIn]
       alt="hero"
       class="hidden h-auto rounded-lg lg:h-full lg:block">
