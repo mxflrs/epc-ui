@@ -1,0 +1,46 @@
+<section *ngIf="openContactModal" class="backdrop-blur-md bg-epc-d1">
+  <div class="relative grid w-4/5 grid-cols-3 rounded-lg lg:w-1/2 xl:h-2/4 xl:w-1/2 bg-epc-w0">
+    <div class="flex flex-col h-32 col-span-3 sm:h-48 md:h-full bg-slate-600 left-col md:col-span-1">
+    </div>
+
+    <div class="flex flex-col justify-center col-span-3 p-8 md:col-span-2">
+      <h3 class="pb-2">Contactanos!</h3>
+      @if (info.length > 0) {
+
+      <div class="flex items-center gap-2">
+        <i class="iconoir-headset-help"></i>
+        <p>{{info[0].phone}}</p>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <i class="iconoir-mail"></i>
+        <p>{{info[0].email}}</p>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <i class="iconoir-map"></i>
+        <p>{{info[0].address}}</p>
+      </div>
+
+      <div class="items-start hidden gap-2 sm:flex">
+        <i class="pt-2 iconoir-clock"></i>
+        <div>
+          <div class="flex gap-2">
+            <p>Lunes - Viernes</p>
+            <p>de {{info[0].businessHours.weekdays.startTime}} a {{info[0].businessHours.weekdays.endTime}}</p>
+          </div>
+
+          <div class="flex gap-2">
+            <p>Sabado - Domingo</p>
+            <p>de {{info[0].businessHours.weekends.startTime}} a {{info[0].businessHours.weekends.endTime}}</p>
+          </div>
+        </div>
+      </div>
+
+      }
+    </div>
+
+    <button class="absolute flex items-center justify-center rounded-md size-8 -right-2 -top-2 bg-epc-d0 text-epc-w0 hover:bg-epc-o0 hover:text-epc-r1"
+      (click)="closeContactModal()">x</button>
+  </div>
+</section>

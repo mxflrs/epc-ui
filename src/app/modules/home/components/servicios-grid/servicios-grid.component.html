@@ -1,0 +1,94 @@
+<section class="container grid grid-cols-6 mx-auto my-24 lg:w-full w-[80vw]">
+  <!-- INTRO -->
+  <h2 class="col-span-6 text-center lg:col-span-4 lg:text-left">
+    ¡Estamos aquí para brindarte todo el apoyo<br />
+    que necesites en cada paso del camino!
+  </h2>
+  <div class="col-span-6 text-center lg:col-span-2 lg:text-justify">
+    <h6>
+      Desde resolver tus consultas más simples hasta abordar desafíos más
+      complejos, nuestro compromiso es estar a tu lado en cada paso del proceso.
+    </h6>
+  </div>
+</section>
+
+<section
+  class="container grid grid-cols-2 gap-8 mx-auto lg:grid-cols-3"
+  id="servicios"
+  *ngIf="services[0]?.image"
+>
+  @for (service of services; track $index){
+  <button
+    *ngIf="service?.image?.asset"
+    class="relative bg-center bg-cover card group"
+    (click)="onColumnClick($index)"
+    (mouseenter)="setCurrentIndex($index)"
+    (mouseleave)="setCurrentIndex()"
+  >
+    <h3 class="z-20 text-left">{{ service.parentService }}</h3>
+    <p class="z-20 text-xs text-left">{{ service.description }}</p>
+    <div class="z-20 icon">
+      <i class="iconoir-{{ service.icon }}"></i>
+    </div>
+    <span
+      class="absolute top-0 left-0 z-10 w-full h-full transition-all duration-500 bg-transparent rounded-lg group-hover:bg-gradient-to-t from-epc-d0 to-epc-d1"
+    ></span>
+    <span
+      class="absolute top-0 left-0 z-0 w-full h-full transition-opacity duration-500 rounded-lg opacity-0 bg-img group-hover:opacity-100"
+      [style.background-image]="
+        'url(' + imageUrl(service.image.asset._ref) + '?w=600&q=70&b=20' + ')'
+      "
+    ></span>
+  </button>
+  }
+</section>
+
+<!-- MODAL -->
+
+@if (selectedService) {
+<div
+  class="fixed top-0 right-0 z-20 flex items-center justify-center w-full h-screen bg-epc-d1 backdrop-blur-md"
+>
+  <!-- MAIN -->
+  <div
+    class="relative w-full max-w-2xl max-h-full p-8 m-4 rounded-md lg:w-2/3 bg-epc-w0 lg:max-h-2/3 lg:m-0"
+  >
+    <button
+      class="absolute flex items-center justify-center rounded-md size-8 -right-2 -top-2 bg-epc-d0 text-epc-w0 hover:text-epc-r1 hover:bg-epc-o0"
+      (click)="closeContactModal()"
+    >
+      x
+    </button>
+    <div
+      class="flex items-center gap-2 p-4 mb-4 overflow-auto rounded-md bg-epc-r1 text-epc-w0"
+    >
+      <i class="iconoir-{{ selectedService.icon }} text-4xl text-epc-d0"></i>
+      <h2 class="text-balance">{{ selectedService.parentService }}</h2>
+    </div>
+    <div class="flex flex-col justify-start gap-1 pl-4">
+      @for (subservice of selectedService.subservices; track $index) {
+      <div class="flex items-center justify-start gap-4">
+        <span class="w-3 h-3 pt-4 rounded-sm bg-epc-r0 hover:bg-epc-r2"> </span>
+        <p>{{ subservice.service }}</p>
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- NEXT SERVICE -->
+  <button
+    (click)="onNextService()"
+    class="absolute flex items-center w-auto h-8 p-4 rounded-sm right-8 bg-epc-w2 hover:bg-epc-r1 text-epc-w0"
+  >
+    <i class="iconoir-arrow-up-right"></i>
+  </button>
+
+  <!-- PREV SERVICE -->
+  <button
+    (click)="onPrevService()"
+    class="absolute flex items-center w-auto h-8 p-4 rounded-sm left-8 bg-epc-w2 hover:bg-epc-r1 text-epc-w0"
+  >
+    <i class="iconoir-arrow-down-left"></i>
+  </button>
+</div>
+}

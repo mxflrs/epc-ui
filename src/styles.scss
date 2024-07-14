@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Sora';
+  src: url('./assets/fonts/Sora-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+}
+
+button {
+  background-color: unset;
+  border: unset;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.4;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-weight: 700;
+}
+
+h6 {
+  font-size: 0.875rem;
+  line-height: 2;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.spikes {
+  position: relative;
+}
+
+.spikes::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 100%;
+  z-index: 10;
+  height: 10px;
+  background-size: 10px 10px;
+  background-image: linear-gradient(135deg, #F5F5F4 25%, transparent 25%),
+                    linear-gradient(225deg, #F5F5F4 25%, transparent 25%);
+  background-position: 0 0;
+}

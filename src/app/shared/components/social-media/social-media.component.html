@@ -1,0 +1,9 @@
+<div class="fixed right-0 z-20 items-center hidden h-screen p-2 lg:flex">
+  <div class="flex flex-col *:bg-slate-300 gap-2 *:rounded-sm *:opacity-40">
+    @if(info.length > 0) {
+      @for (social of info[0].socialMedia; track $index) {
+        <a target="_blank" [href]="social.link" [class]="social.color + ' p-2 text-center text-xs'">{{social.name}}</a>
+      }
+    }
+  </div>
+</div>

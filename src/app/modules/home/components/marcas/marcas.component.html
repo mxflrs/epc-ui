@@ -1,0 +1,8 @@
+<section class="container pb-12 mx-auto">
+  <h3 class="pb-12 text-center text-slate-300"><span class="text-slate-200">* </span>Marcas amigas del Paisa Cargo</h3>
+  <div class="flex flex-wrap gap-16 items-start justify-center *:h-auto *:max-w-40 *:max-h-14">
+    @for (brand of brands; track brand._id){
+    <img [src]="imageUrl(brand.image.asset._ref)" alt="brand logo" class="my-auto">
+    }
+  </div>
+</section>

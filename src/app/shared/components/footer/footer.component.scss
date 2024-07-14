@@ -1,0 +1,9 @@
+ul.relative {
+  position: relative;
+}
+
+span.asterisk {
+  position: absolute;
+  left: 0;
+  transition: top 0.3s ease;
+}
